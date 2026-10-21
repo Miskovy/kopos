@@ -1,0 +1,12 @@
+[package]
+name = "kopos"
+version = "0.1.0"
+edition = "2024"
+description = "Research foundation for worker execution and parallel computation"
+publish = false
+
+[dependencies]
+
+[[bin]]
+name = "os"
+path = "src/common/os.rs"
