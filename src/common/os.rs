@@ -1,11 +1,16 @@
-use std::env;
+use kopos::api::{PlatformInfo, CpuInfo, WorkerConfig};
 
-const OPERATING_SYSTEM: &str = env::consts::OS;
-const ARCH: &str = env::consts::ARCH;
-const FAMILY: &str = env::consts::FAMILY;
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let info = PlatformInfo::current();
+    println!("Operating system {}", info.os());
+    println!("Architecture {}", info.arch());
+    println!("Family name {}", info.family());
+    println!("Summary: {}", info);
 
-fn main(){
-    println!("Operating system {}",OPERATING_SYSTEM);
-    println!("Architecture {}",ARCH);
-    println!("Family name {}",FAMILY);
+    let cpu = CpuInfo::detect()?;
+    println!("Cpu info: {:?}", cpu);
+
+    let config = WorkerConfig::new(cpu.available_parallelism().get())?;
+    println!("Worker config: {:?}", config.workers().get());
+    Ok(())
 }

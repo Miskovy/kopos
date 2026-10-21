@@ -1,1 +1,1 @@
-mod os;
+pub(crate) mod structs;
