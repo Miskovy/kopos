@@ -1,0 +1,16 @@
+[package]
+name = "kopos-node"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+kopos = { path = "../.." }
+napi = { version = "=3.15.0", default-features = false, features = ["napi8"] }
+napi-derive = "=3.6.12"
+
+[build-dependencies]
+napi-build = "=2.6.0"
+
+[lib]
+crate-type = ["cdylib"]

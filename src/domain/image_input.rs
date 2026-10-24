@@ -1,13 +1,18 @@
+/// A nonempty grayscale image with validated dimensions and owned pixel storage.
 #[derive(Debug, Clone)]
 pub(crate) struct ImageInput {
     width: usize,
     height: usize,
     pixels: Vec<u8>,
 }
+/// Describes invalid dimensions or pixel storage supplied to an image operation.
 #[derive(Debug)]
-pub(crate) enum ImageInputError {
+pub enum ImageInputError {
+    /// The width or height is zero; both dimensions must be positive.
     ZeroDimensions,
+    /// Multiplying the width by the height exceeds the range of `usize`.
     DimensionsOverflow,
+    /// The buffer length differs from the required one byte per pixel.
     PixelsCountMismatch,
 }
 

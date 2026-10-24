@@ -1,7 +1,8 @@
 //! Kopos research foundation for worker execution and parallel computation.
 //!
 //! The crate provides build-target platform information, runtime parallel-capacity
-//! discovery, validated worker configuration, and module boundaries.
+//! discovery, validated worker configuration, and a serial grayscale box-filter
+//! experiment through [`api::filter_grayscale`].
 //! Worker runtime behavior, native bindings, and execution backends belong to
 //! later reviewed stages.
 //!
