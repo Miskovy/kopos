@@ -4,4 +4,5 @@
 //! validated construction. Keep this module independent of application policy,
 //! adapters, bindings, and JavaScript engine handles.
 
+mod image_input;
 pub(crate) mod worker_config;

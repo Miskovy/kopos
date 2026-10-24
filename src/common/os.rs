@@ -1,4 +1,4 @@
-use kopos::api::{PlatformInfo, CpuInfo, WorkerConfig};
+use kopos::api::{CpuInfo, PlatformInfo, WorkerConfig};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let info = PlatformInfo::current();
