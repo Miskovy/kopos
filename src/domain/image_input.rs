@@ -1,11 +1,11 @@
 #[derive(Debug, Clone)]
-struct ImageInput {
+pub(crate) struct ImageInput {
     width: usize,
     height: usize,
     pixels: Vec<u8>,
 }
 #[derive(Debug)]
-enum ImageInputError {
+pub(crate) enum ImageInputError {
     ZeroDimensions,
     DimensionsOverflow,
     PixelsCountMismatch,
@@ -56,6 +56,24 @@ impl ImageInput {
         self.pixels[y * self.width + x]
     }
 }
+
+impl std::fmt::Display for ImageInputError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::ZeroDimensions => {
+                write!(f, "Image width and height must be greater than zero")
+            }
+            Self::DimensionsOverflow => {
+                write!(f, "Image dimensions exceed the supported size")
+            }
+            Self::PixelsCountMismatch => {
+                write!(f, "Pixel count does not match the image dimensions")
+            }
+        }
+    }
+}
+
+impl std::error::Error for ImageInputError {}
 
 #[cfg(test)]
 mod tests {
